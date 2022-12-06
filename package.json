@@ -1,6 +1,6 @@
 {
   "name": "nest-ali-pay",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "@nestjs/alipay扩展模块",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

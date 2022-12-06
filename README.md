@@ -38,20 +38,42 @@ Alipay utilities module for [Nest](https://github.com/nestjs/nest).
 $ npm i --save nest-ali-pay
 ```
 
-## Quick Start
+## 模块注册
+```typescript
+import { Module } from '@nestjs/common';
+import { AliPayModule } from 'nest-ali-pay';
 
-[Overview & Tutorial](https://docs.nestjs.com/techniques/authentication)
+@Module({
+    imports: [
+        AliPayModule.registerAsync({
+            useFactory: () => ({
+                // 参考下方 SDK 配置
+                appId: '2016123456789012',
+                // 私钥
+                privateKey: fs.readFileSync('./private-key.pem', 'ascii'),
+                //可设置AES密钥，调用AES加解密相关接口时需要（可选）
+                encryptKey: '请填写您的AES密钥，例如：aa4BtZ4tspm2wnXLb1ThQA',
+            }),
+        }),
+    ],
+})
+export class AlipayPaymentModule {}
+```
+## 注入服务
+```typescript
+import { Inject, Injectable } from '@nestjs/common';
+import AlipaySdk from 'alipay-sdk';
+import { ALI_PAY_MANAGER } from 'nest-ali-pay';
 
-## Support
+@Injectable()
+export class AlipayPaymentService {
+    constructor(@Inject(ALI_PAY_MANAGER) private readonly aliPay: AlipaySdk) {}
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-* Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-* Website - [https://nestjs.com](https://nestjs.com/)
-* Twitter - [@nestframework](https://twitter.com/nestframework)
-
+    public payment() {
+        this.aliPay.exec("")
+    }
+}
+```
 ## License
 
 Nest is [MIT licensed](LICENSE).
