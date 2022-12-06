@@ -1,0 +1,27 @@
+{
+  "name": "nest-ali-pay",
+  "version": "1.0.1",
+  "description": "@nestjs/alipay扩展模块",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf ./dist && tsc",
+    "release": "npm publish"
+  },
+  "author": "lastly1999",
+  "files": [
+    "dist"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@nestjs/common": "^9.2.1",
+    "rxjs": "^7.6.0",
+    "user": "^0.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.11",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.9.3"
+  }
+}
