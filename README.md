@@ -35,7 +35,7 @@ Alipay utilities module for [Nest](https://github.com/nestjs/nest).
 ## Installation
 
 ```bash
-$ npm i --save nest-ali-pay
+$ npm i --save nest-ali-pay alipay-sdk
 ```
 
 ## 模块注册
